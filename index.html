@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RevMax Digital Hospitality | Revenue. Digital. Growth.</title>
-    <meta name="description" content="Leading hospitality revenue management, OTA channel optimization, website development, and digital marketing consulting tailored for Ethiopia and East Africa.">
-    <!-- Google Fonts -->
+    <meta name="description" content="Leading hospitality revenue management, OTA distribution, website development, and digital marketing consulting tailored for Ethiopia and East Africa.">
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -38,7 +38,7 @@
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-12px)' },
+                            '50%': { transform: 'translateY(-10px)' },
                         },
                         shimmer: {
                             '100%': { transform: 'translateX(100%)' }
@@ -55,7 +55,7 @@
         ::-webkit-scrollbar-thumb:hover { background: #0066FF; }
 
         .glass-panel {
-            background: rgba(15, 28, 63, 0.7);
+            background: rgba(15, 28, 63, 0.75);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(0, 229, 255, 0.12);
@@ -63,7 +63,6 @@
         .glass-panel:hover {
             border-color: rgba(0, 229, 255, 0.35);
         }
-        
         .mesh-bg {
             background-color: #060B18;
             background-image: 
@@ -72,7 +71,6 @@
                 radial-gradient(at 50% 80%, rgba(30, 58, 138, 0.2) 0px, transparent 50%),
                 radial-gradient(at 80% 90%, rgba(245, 158, 11, 0.08) 0px, transparent 40%);
         }
-
         #particle-canvas {
             position: absolute;
             top: 0;
@@ -86,7 +84,7 @@
 </head>
 <body class="mesh-bg text-slate-100 font-sans selection:bg-revblue selection:text-white antialiased overflow-x-hidden">
 
-    <!-- Reading Progress Bar -->
+    <!-- Progress Bar -->
     <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-revblue via-revcyan to-revgold z-50 transition-all duration-150" style="width: 0%;"></div>
 
     <!-- Sticky Navigation -->
@@ -98,38 +96,34 @@
                     <div class="absolute -top-1 -right-1 w-3 h-3 bg-revcyan rounded-full animate-ping"></div>
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-heading font-extrabold text-xl tracking-tight text-white flex items-center gap-1">
+                    <span class="font-heading font-extrabold text-xl tracking-tight text-white">
                         Rev<span class="text-revcyan">Max</span>
                     </span>
                     <span class="text-[9px] tracking-widest uppercase font-semibold text-slate-400">Digital Hospitality</span>
                 </div>
             </a>
 
-            <!-- Desktop Menu -->
             <nav class="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-300">
                 <a href="#home" class="hover:text-revcyan transition-colors">Home</a>
                 <a href="#about" class="hover:text-revcyan transition-colors">About</a>
                 <a href="#market" class="hover:text-revcyan transition-colors">Ethiopia Market</a>
                 <a href="#services" class="hover:text-revcyan transition-colors">Services</a>
                 <a href="#roi-calculator" class="hover:text-revcyan transition-colors">ROI Calculator</a>
-                <a href="#why-us" class="hover:text-revcyan transition-colors">Why RevMax</a>
                 <a href="#contact" class="hover:text-revcyan transition-colors">Contact</a>
             </nav>
 
-            <!-- Action Buttons -->
             <div class="hidden sm:flex items-center gap-4">
                 <a href="tel:+25185447873" class="text-xs font-semibold text-slate-300 hover:text-revcyan flex items-center gap-2 bg-revcard/60 px-3 py-2 rounded-lg border border-revborder">
                     <i class="fa-solid fa-phone text-revcyan"></i> +251 854 47873
                 </a>
                 <button onclick="openBookingModal()" class="relative group overflow-hidden rounded-xl p-[1px] focus:outline-none">
                     <span class="absolute inset-0 bg-gradient-to-r from-revblue via-revcyan to-revblue animate-shimmer" style="background-size: 200% 100%;"></span>
-                    <span class="relative px-5 py-2.5 rounded-xl bg-revnavy text-white text-xs font-heading font-bold flex items-center gap-2 group-hover:bg-opacity-85 transition-all">
+                    <span class="relative px-5 py-2.5 rounded-xl bg-revnavy text-white text-xs font-heading font-bold flex items-center gap-2 group-hover:bg-opacity-80 transition-all">
                         <i class="fa-solid fa-calendar-check text-revcyan"></i> Book Consultation
                     </span>
                 </button>
             </div>
 
-            <!-- Mobile Menu Toggle -->
             <button id="mobile-menu-btn" class="lg:hidden text-slate-200 text-2xl focus:outline-none p-2">
                 <i class="fa-solid fa-bars-staggered"></i>
             </button>
@@ -137,13 +131,12 @@
 
         <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 right-0 bg-revnavy/95 backdrop-blur-xl border-b border-revborder p-6 flex flex-col gap-4 shadow-2xl">
-            <a href="#home" class="mobile-link text-slate-200 hover:text-revcyan font-medium py-2">Home</a>
-            <a href="#about" class="mobile-link text-slate-200 hover:text-revcyan font-medium py-2">About Us</a>
-            <a href="#market" class="mobile-link text-slate-200 hover:text-revcyan font-medium py-2">Ethiopian Market Context</a>
-            <a href="#services" class="mobile-link text-slate-200 hover:text-revcyan font-medium py-2">Services</a>
-            <a href="#roi-calculator" class="mobile-link text-slate-200 hover:text-revcyan font-medium py-2">ROI Calculator</a>
-            <a href="#why-us" class="mobile-link text-slate-200 hover:text-revcyan font-medium py-2">Why RevMax</a>
-            <a href="#contact" class="mobile-link text-slate-200 hover:text-revcyan font-medium py-2">Contact</a>
+            <a href="#home" onclick="toggleMobileMenu()" class="text-slate-200 hover:text-revcyan font-medium py-2">Home</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="text-slate-200 hover:text-revcyan font-medium py-2">About Us</a>
+            <a href="#market" onclick="toggleMobileMenu()" class="text-slate-200 hover:text-revcyan font-medium py-2">Ethiopian Market Context</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="text-slate-200 hover:text-revcyan font-medium py-2">Services</a>
+            <a href="#roi-calculator" onclick="toggleMobileMenu()" class="text-slate-200 hover:text-revcyan font-medium py-2">ROI Calculator</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="text-slate-200 hover:text-revcyan font-medium py-2">Contact</a>
             <div class="pt-4 border-t border-revborder flex flex-col gap-3">
                 <a href="tel:+25185447873" class="text-sm font-semibold text-slate-300 flex items-center gap-2">
                     <i class="fa-solid fa-phone text-revcyan"></i> +251 854 47873
@@ -155,7 +148,7 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION WITH INTERACTIVE COMPETITIVE SIMULATOR -->
     <section id="home" class="relative min-h-screen flex items-center justify-center pt-28 pb-20 px-6 overflow-hidden">
         <canvas id="particle-canvas"></canvas>
         <div class="absolute top-1/4 left-10 w-72 h-72 bg-revblue/20 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
@@ -165,15 +158,15 @@
             <div class="lg:col-span-7 flex flex-col gap-6 text-left">
                 <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-revcard/80 border border-revcyan/30 text-revcyan text-xs font-semibold tracking-wide w-fit backdrop-blur-md shadow-lg">
                     <span class="w-2 h-2 rounded-full bg-revcyan animate-ping"></span>
-                    <span>East Africa’s Premier Hospitality Tech & Revenue Partner</span>
+                    <span>Live OTA & Competitor Intelligence Simulator</span>
                 </div>
 
                 <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.15]">
-                    Maximizing Hospitality <span class="text-transparent bg-clip-text bg-gradient-to-r from-revcyan via-blue-400 to-revblue">Revenue. Digital. Growth.</span>
+                    Maximizing Hospitality <span class="text-transparent bg-clip-text bg-gradient-to-r from-revcyan via-blue-400 to-revblue">Revenue & Digital</span> Excellence
                 </h1>
 
                 <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed font-normal">
-                    Empowering hotels, resorts, restaurants, and tour operators across Addis Ababa and beyond with advanced revenue management, precision OTA channel optimization, digital marketing, and bespoke hotel systems.
+                    Empowering hotels, resorts, and restaurants across Addis Ababa with precision OTA channel optimization, competitive rate benchmarking, and high-conversion web technologies.
                 </p>
 
                 <div class="flex flex-wrap items-center gap-4 pt-2">
@@ -197,58 +190,82 @@
                     </div>
                     <div>
                         <div class="font-heading font-black text-2xl sm:text-3xl text-white">24/7</div>
-                        <div class="text-xs text-slate-400 font-medium">Revenue Monitoring</div>
+                        <div class="text-xs text-slate-400 font-medium">Market Benchmarking</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Hero Interactive 3D Graphic Card -->
+            <!-- Interactive Competitor / OTA Selector Card -->
             <div class="lg:col-span-5 flex justify-center">
                 <div class="relative w-full max-w-md">
                     <div class="absolute inset-0 bg-gradient-to-tr from-revblue to-revcyan rounded-3xl blur-2xl opacity-30 animate-pulse-slow"></div>
-                    <div class="relative glass-panel p-8 rounded-3xl shadow-2xl border border-revcyan/20 flex flex-col gap-6 animate-float">
-                        <div class="flex items-center justify-between pb-4 border-b border-revborder">
+                    
+                    <div class="relative glass-panel p-6 sm:p-8 rounded-3xl shadow-2xl border border-revcyan/20 flex flex-col gap-6 animate-float">
+                        <div class="flex items-center justify-between pb-3 border-b border-revborder">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-xl bg-revblue/20 flex items-center justify-center text-revcyan">
-                                    <i class="fa-solid fa-hotel text-xl"></i>
+                                    <i class="fa-solid fa-globe text-xl"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-heading font-bold text-sm text-white">Addis Ababa Hotel Live Feed</h4>
+                                    <h4 class="font-heading font-bold text-sm text-white">Live OTA & Market Feed</h4>
                                     <p class="text-[11px] text-emerald-400 font-semibold flex items-center gap-1.5">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> Peak MICE & Corporate Demand
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> Live Web Simulator
                                     </p>
                                 </div>
                             </div>
-                            <span class="text-xs bg-revcyan/10 text-revcyan px-2.5 py-1 rounded-full font-bold">+28.4% Rev</span>
                         </div>
 
+                        <!-- Interactive Selectors for Users to Play With -->
                         <div class="space-y-3">
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Select District</label>
+                                    <select id="district-select" onchange="updateSimulatedFeed()" class="w-full mt-1 bg-revnavy border border-revborder rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-revcyan cursor-pointer">
+                                        <option value="kazanchis">Kazanchis / UN District</option>
+                                        <option value="bole">Bole International Hub</option>
+                                        <option value="meskel">Meskel Square / Center</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Data Source</label>
+                                    <select id="source-select" onchange="updateSimulatedFeed()" class="w-full mt-1 bg-revnavy border border-revborder rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-revcyan cursor-pointer">
+                                        <option value="google">Google Hotels & OTAs</option>
+                                        <option value="booking">Booking.com Rate Index</option>
+                                        <option value="expedia">Expedia Group Index</option>
+                                        <option value="direct">Direct Channel Mix</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic Output Cards -->
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <div class="bg-revnavy/70 p-3.5 rounded-2xl border border-revborder">
+                                <div id="metric-1-label" class="text-[11px] text-slate-400">Market Occupancy</div>
+                                <div id="metric-1-val" class="text-lg font-heading font-bold text-white mt-0.5">78.5%</div>
+                                <div class="text-[10px] text-emerald-400 font-semibold mt-1"><i class="fa-solid fa-arrow-up"></i> Peak MICE demand</div>
+                            </div>
+                            <div class="bg-revnavy/70 p-3.5 rounded-2xl border border-revborder">
+                                <div id="metric-2-label" class="text-[11px] text-slate-400">Avg Competitor ADR</div>
+                                <div id="metric-2-val" class="text-lg font-heading font-bold text-revcyan mt-0.5">$165.00</div>
+                                <div class="text-[10px] text-emerald-400 font-semibold mt-1"><i class="fa-solid fa-chart-line"></i> Real-time scrape</div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 pt-1">
                             <div class="flex justify-between text-xs text-slate-300">
-                                <span class="text-slate-400">Direct vs OTA Share</span>
-                                <span class="font-semibold text-revcyan">64% Direct Bookings</span>
+                                <span id="bar-label" class="text-slate-400">Direct vs OTA Distribution</span>
+                                <span id="bar-percentage" class="font-semibold text-revcyan">62% Direct / 38% OTA</span>
                             </div>
                             <div class="w-full h-2.5 bg-revnavy rounded-full overflow-hidden flex">
-                                <div class="bg-revcyan h-full rounded-l-full transition-all duration-1000" style="width: 64%"></div>
-                                <div class="bg-revblue h-full rounded-r-full transition-all duration-1000" style="width: 36%"></div>
+                                <div id="progress-direct" class="bg-revcyan h-full rounded-l-full transition-all duration-500" style="width: 62%"></div>
+                                <div id="progress-ota" class="bg-revblue h-full rounded-r-full transition-all duration-500" style="width: 38%"></div>
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-2 gap-3 pt-2">
-                            <div class="bg-revnavy/60 p-3.5 rounded-2xl border border-revborder">
-                                <div class="text-[11px] text-slate-400">Occupancy Rate</div>
-                                <div class="text-lg font-heading font-bold text-white mt-0.5">84.5%</div>
-                                <div class="text-[10px] text-emerald-400 font-semibold mt-1"><i class="fa-solid fa-arrow-up"></i> +12% this month</div>
-                            </div>
-                            <div class="bg-revnavy/60 p-3.5 rounded-2xl border border-revborder">
-                                <div class="text-[11px] text-slate-400">Average Daily Rate</div>
-                                <div class="text-lg font-heading font-bold text-revcyan mt-0.5">$185.00</div>
-                                <div class="text-[10px] text-emerald-400 font-semibold mt-1"><i class="fa-solid fa-arrow-up"></i> Optimized ADR</div>
-                            </div>
-                        </div>
-
-                        <div class="pt-2 flex items-center justify-between text-xs text-slate-400 border-t border-revborder">
-                            <span>Powered by RevMax Engine</span>
-                            <span class="text-revcyan font-semibold">Active Sync</span>
+                        <div class="pt-1 flex items-center justify-between text-[11px] text-slate-400 border-t border-revborder">
+                            <span>Simulated Online Feed</span>
+                            <span class="text-revcyan font-semibold">Updated Today</span>
                         </div>
                     </div>
                 </div>
@@ -267,10 +284,10 @@
                     Driving Revenue and Digital Transformation for Hospitality Leaders
                 </h2>
                 <p class="text-slate-300 text-base leading-relaxed">
-                    Based in Addis Ababa, Ethiopia, <strong class="text-white">RevMax Digital Hospitality</strong> is an elite hospitality consulting and technology agency. We bridge the gap between traditional hotel operations and cutting-edge digital revenue generation.
+                    Based in Addis Ababa, Ethiopia, <strong class="text-white">RevMax Digital Hospitality</strong> is an elite hospitality consulting and technology agency. We combine deep hotel operations insight with cutting-edge online revenue generation.
                 </p>
                 <p class="text-slate-300 text-base leading-relaxed">
-                    Our mission is simple: maximize your property's profitability through data-backed revenue strategies, high-conversion websites, flawless Online Travel Agency (OTA) distribution, and world-class staff training tailored specifically to East African and international market dynamics.
+                    Our mission is to maximize your property's profitability through data-backed pricing strategies, high-conversion websites, flawless OTA distribution, and custom staff training tailored specifically to East African market dynamics.
                 </p>
 
                 <div class="grid grid-cols-2 gap-6 pt-4">
@@ -279,8 +296,8 @@
                             <i class="fa-solid fa-check"></i>
                         </div>
                         <div>
-                            <h4 class="font-heading font-bold text-white text-sm">Strategic Revenue Audits</h4>
-                            <p class="text-xs text-slate-400 mt-1">Comprehensive yield and pricing strategy analysis.</p>
+                            <h4 class="font-heading font-bold text-white text-sm">Competitive Benchmarking</h4>
+                            <p class="text-xs text-slate-400 mt-1">Real-time competitor rate tracking and positioning.</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-3">
@@ -302,7 +319,7 @@
                     </div>
                     <div>
                         <div class="font-heading font-extrabold text-3xl text-white">100+</div>
-                        <div class="text-xs text-slate-400 font-medium mt-1">Hotels & Properties Audited</div>
+                        <div class="text-xs text-slate-400 font-medium mt-1">Properties Benchmarked</div>
                     </div>
                 </div>
                 <div class="glass-panel p-6 rounded-3xl border border-revborder flex flex-col justify-between space-y-8 mt-6">
@@ -329,48 +346,45 @@
                     Optimized for Ethiopia’s Unique Hospitality Ecosystem
                 </h2>
                 <p class="text-slate-300 text-base">
-                    Navigating Addis Ababa’s dynamic blend of diplomatic missions, international MICE delegations, Ethiopian Airlines transit traffic, and expanding domestic tourism requires specialized market positioning.
+                    Navigating Addis Ababa’s dynamic blend of diplomatic missions, international MICE delegations, and Ethiopian Airlines transit traffic requires specialized market intelligence.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Market Pillar 1 -->
                 <div class="glass-panel p-8 rounded-3xl border border-revborder relative group hover:border-revcyan/50 transition-all">
                     <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-revblue to-revcyan flex items-center justify-center text-white text-2xl mb-6 shadow-lg shadow-revblue/30 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-plane-departure"></i>
                     </div>
                     <h3 class="font-heading font-bold text-xl text-white mb-3">MICE & Diplomatic Hub Strategy</h3>
                     <p class="text-slate-300 text-sm leading-relaxed">
-                        Capitalizing on Addis Ababa as the diplomatic capital of Africa. We configure dynamic corporate contracting, embassy rates, and high-yield conference packaging to maximize weekday occupancy.
+                        Capitalizing on Addis Ababa as the diplomatic capital of Africa. We configure dynamic corporate contracting and conference packaging to maximize weekday occupancy.
                     </p>
                 </div>
 
-                <!-- Market Pillar 2 -->
                 <div class="glass-panel p-8 rounded-3xl border border-revborder relative group hover:border-revcyan/50 transition-all">
                     <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-revblue to-revcyan flex items-center justify-center text-white text-2xl mb-6 shadow-lg shadow-revblue/30 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-network-wired"></i>
                     </div>
                     <h3 class="font-heading font-bold text-xl text-white mb-3">OTA Channel & Payment Integration</h3>
                     <p class="text-slate-300 text-sm leading-relaxed">
-                        Balancing Booking.com, Expedia, and local channels while seamlessly bridging international currency workflows with local digital payment infrastructure for smooth guest settlement.
+                        Balancing Booking.com, Expedia, and local channels while seamlessly bridging international currency workflows with local digital payment infrastructure.
                     </p>
                 </div>
 
-                <!-- Market Pillar 3 -->
                 <div class="glass-panel p-8 rounded-3xl border border-revborder relative group hover:border-revcyan/50 transition-all">
                     <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-revblue to-revcyan flex items-center justify-center text-white text-2xl mb-6 shadow-lg shadow-revblue/30 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-utensils"></i>
                     </div>
                     <h3 class="font-heading font-bold text-xl text-white mb-3">F&B & Boutique Hotel Growth</h3>
                     <p class="text-slate-300 text-sm leading-relaxed">
-                        Modernizing independent Addis boutique hotels and restaurants with QR digital menus, localized social media marketing, and reputation management that builds instant local trust.
+                        Modernizing independent Addis boutique hotels and restaurants with QR digital menus, localized social media marketing, and reputation management.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SERVICES SECTION (8 CARDS) -->
+    <!-- SERVICES SECTION -->
     <section id="services" class="py-24 px-6 bg-revdark/60 border-t border-revborder relative">
         <div class="max-w-7xl mx-auto space-y-16">
             <div class="text-center max-w-3xl mx-auto space-y-4">
@@ -385,9 +399,7 @@
                 </p>
             </div>
 
-            <!-- Service Cards Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Service 1 -->
                 <div class="glass-panel p-6 rounded-3xl border border-revborder hover:border-revcyan/50 transition-all group flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 rounded-2xl bg-revblue/20 flex items-center justify-center text-revcyan text-xl mb-6 group-hover:scale-110 transition-transform">
@@ -401,7 +413,6 @@
                     </button>
                 </div>
 
-                <!-- Service 2 -->
                 <div class="glass-panel p-6 rounded-3xl border border-revborder hover:border-revcyan/50 transition-all group flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 rounded-2xl bg-revcyan/20 flex items-center justify-center text-revcyan text-xl mb-6 group-hover:scale-110 transition-transform">
@@ -415,7 +426,6 @@
                     </button>
                 </div>
 
-                <!-- Service 3 -->
                 <div class="glass-panel p-6 rounded-3xl border border-revborder hover:border-revcyan/50 transition-all group flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 rounded-2xl bg-revblue/20 flex items-center justify-center text-revcyan text-xl mb-6 group-hover:scale-110 transition-transform">
@@ -429,7 +439,6 @@
                     </button>
                 </div>
 
-                <!-- Service 4 -->
                 <div class="glass-panel p-6 rounded-3xl border border-revborder hover:border-revcyan/50 transition-all group flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 rounded-2xl bg-revcyan/20 flex items-center justify-center text-revcyan text-xl mb-6 group-hover:scale-110 transition-transform">
@@ -442,67 +451,11 @@
                         <span>Learn More</span> <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
-
-                <!-- Service 5 -->
-                <div class="glass-panel p-6 rounded-3xl border border-revborder hover:border-revcyan/50 transition-all group flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-revblue/20 flex items-center justify-center text-revcyan text-xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <h3 class="font-heading font-bold text-lg text-white mb-2">Review & Reputation Management</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">Proactive guest feedback monitoring, review response strategies, and TripAdvisor/Google ranking enhancement.</p>
-                    </div>
-                    <button onclick="openBookingModal()" class="mt-6 text-xs text-revcyan font-semibold flex items-center gap-2 group-hover:translate-x-1 transition-transform">
-                        <span>Learn More</span> <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- Service 6 -->
-                <div class="glass-panel p-6 rounded-3xl border border-revborder hover:border-revcyan/50 transition-all group flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-revcyan/20 flex items-center justify-center text-revcyan text-xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-qrcode"></i>
-                        </div>
-                        <h3 class="font-heading font-bold text-lg text-white mb-2">Digital Menu Solutions</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">Contactless QR code menus, interactive restaurant ordering, and multi-language support for cafes and restaurants.</p>
-                    </div>
-                    <button onclick="openBookingModal()" class="mt-6 text-xs text-revcyan font-semibold flex items-center gap-2 group-hover:translate-x-1 transition-transform">
-                        <span>Learn More</span> <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- Service 7 -->
-                <div class="glass-panel p-6 rounded-3xl border border-revborder hover:border-revcyan/50 transition-all group flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-revblue/20 flex items-center justify-center text-revcyan text-xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                        </div>
-                        <h3 class="font-heading font-bold text-lg text-white mb-2">Hospitality Training</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">Professional front office, revenue management, and guest relations training for hotel staff.</p>
-                    </div>
-                    <button onclick="openBookingModal()" class="mt-6 text-xs text-revcyan font-semibold flex items-center gap-2 group-hover:translate-x-1 transition-transform">
-                        <span>Learn More</span> <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- Service 8 -->
-                <div class="glass-panel p-6 rounded-3xl border border-revborder hover:border-revcyan/50 transition-all group flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-revcyan/20 flex items-center justify-center text-revcyan text-xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-hotel"></i>
-                        </div>
-                        <h3 class="font-heading font-bold text-lg text-white mb-2">New Hotel Project Setup</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">Pre-opening strategy, PMS/POS setup, OTA onboarding, and operational SOP formulation for new properties.</p>
-                    </div>
-                    <button onclick="openBookingModal()" class="mt-6 text-xs text-revcyan font-semibold flex items-center gap-2 group-hover:translate-x-1 transition-transform">
-                        <span>Learn More</span> <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- INTERACTIVE ROI CALCULATOR SECTION -->
+    <!-- INTERACTIVE ROI CALCULATOR -->
     <section id="roi-calculator" class="py-24 px-6 relative">
         <div class="max-w-5xl mx-auto">
             <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-revcyan/30 shadow-2xl space-y-8 relative overflow-hidden">
@@ -541,14 +494,13 @@
                         </div>
                     </div>
 
-                    <!-- Output Card -->
                     <div class="bg-revnavy/90 p-8 rounded-3xl border border-revborder flex flex-col justify-center text-center space-y-6 shadow-inner">
                         <div>
                             <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Estimated Monthly Revenue Lift</div>
                             <div id="lift-val" class="font-heading font-black text-4xl sm:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-revcyan to-blue-400 mt-2">$14,580</div>
                         </div>
                         <div class="text-xs text-slate-400 px-4">
-                            Based on an average +25% RevPAR enhancement through dynamic pricing, OTA tuning, and direct booking conversion.
+                            Based on an average +25% RevPAR enhancement through dynamic pricing and OTA tuning.
                         </div>
                         <button onclick="openBookingModal()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-revblue to-revcyan text-white text-xs font-heading font-bold shadow-lg shadow-revblue/30 hover:opacity-90 transition-opacity">
                             Claim This Growth For Your Property
@@ -559,73 +511,9 @@
         </div>
     </section>
 
-    <!-- WHY CHOOSE REVMAX SECTION (4 CARDS) -->
-    <section id="why-us" class="py-24 px-6 bg-revdark/60 border-t border-revborder relative">
-        <div class="max-w-7xl mx-auto space-y-16">
-            <div class="text-center max-w-3xl mx-auto space-y-4">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-revblue/10 border border-revblue/30 text-revblue text-xs font-semibold">
-                    <i class="fa-solid fa-shield-halved text-revcyan"></i> The RevMax Advantage
-                </div>
-                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
-                    Why Hospitality Leaders Choose Us
-                </h2>
-                <p class="text-slate-300 text-base">
-                    We combine international hospitality standards with local market mastery.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Feature 1 -->
-                <div class="glass-panel p-8 rounded-3xl border border-revborder flex flex-col space-y-4 group hover:border-revcyan/50 transition-all">
-                    <div class="w-12 h-12 rounded-2xl bg-revblue/20 flex items-center justify-center text-revcyan text-xl group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-award"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-xl text-white">Hospitality Expertise</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Deep operational understanding of hotel front office, reservation workflows, and revenue management principles.
-                    </p>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="glass-panel p-8 rounded-3xl border border-revborder flex flex-col space-y-4 group hover:border-revcyan/50 transition-all">
-                    <div class="w-12 h-12 rounded-2xl bg-revcyan/20 flex items-center justify-center text-revcyan text-xl group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-chart-bar"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-xl text-white">Data-Driven Decisions</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Every pricing adjustment and marketing campaign is backed by robust market analytics and occupancy forecasting.
-                    </p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="glass-panel p-8 rounded-3xl border border-revborder flex flex-col space-y-4 group hover:border-revcyan/50 transition-all">
-                    <div class="w-12 h-12 rounded-2xl bg-revblue/20 flex items-center justify-center text-revcyan text-xl group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-sliders"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-xl text-white">Customized Solutions</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Tailored strategies designed around your property size, target clientele, and competitive landscape.
-                    </p>
-                </div>
-
-                <!-- Feature 4 -->
-                <div class="glass-panel p-8 rounded-3xl border border-revborder flex flex-col space-y-4 group hover:border-revcyan/50 transition-all">
-                    <div class="w-12 h-12 rounded-2xl bg-revcyan/20 flex items-center justify-center text-revcyan text-xl group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-seedling"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-xl text-white">Sustainable Growth</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Long-term profitability frameworks that build brand loyalty, direct bookings, and lasting guest retention.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- CONTACT SECTION -->
-    <section id="contact" class="py-24 px-6 relative">
+    <section id="contact" class="py-24 px-6 relative bg-revdark/60 border-t border-revborder">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <!-- Contact Info & Details -->
             <div class="lg:col-span-5 space-y-8">
                 <div class="space-y-4">
                     <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-revblue/10 border border-revblue/30 text-revblue text-xs font-semibold">
@@ -682,7 +570,6 @@
                 </div>
             </div>
 
-            <!-- Contact Form -->
             <div class="lg:col-span-7">
                 <div class="glass-panel p-8 sm:p-10 rounded-3xl border border-revborder relative shadow-2xl">
                     <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
@@ -719,7 +606,6 @@
                         </button>
                     </form>
 
-                    <!-- Success State -->
                     <div id="form-success" class="hidden absolute inset-0 bg-revnavy/95 backdrop-blur-md rounded-3xl flex flex-col items-center justify-center text-center p-8 space-y-4">
                         <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl animate-bounce">
                             <i class="fa-solid fa-check"></i>
@@ -828,9 +714,9 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT ANIMATIONS & INTERACTIVITY -->
+    <!-- JAVASCRIPT & INTERACTIVE SIMULATOR LOGIC -->
     <script>
-        // Scroll Progress Bar & Navbar Styling
+        // Scroll Progress Bar & Navbar
         window.addEventListener('scroll', () => {
             const winScroll = document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -845,17 +731,52 @@
             }
         });
 
-        // Mobile Menu Toggle
+        // Mobile Menu Controls
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => {
+        function toggleMobileMenu() {
             mobileMenu.classList.toggle('hidden');
-        });
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        });
+        }
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
-        // Interactive ROI Calculator Logic
+        // Interactive Competitor / OTA Simulator Data Engine
+        const marketDatasets = {
+            kazanchis: {
+                google: { occ: '78.5%', adr: '$165.00', label1: 'Kazanchis Occupancy Index', label2: 'Google Hotels Avg Rate', direct: 62, ota: 38 },
+                booking: { occ: '74.2%', adr: '$158.00', label1: 'Booking.com Market Share', label2: 'Booking.com Comp ADR', direct: 55, ota: 45 },
+                expedia: { occ: '71.0%', adr: '$152.00', label1: 'Expedia Index Share', label2: 'Expedia Comp ADR', direct: 58, ota: 42 },
+                direct:  { occ: '82.0%', adr: '$170.00', label1: 'Direct Channel Occupancy', label2: 'Direct Booking ADR', direct: 75, ota: 25 }
+            },
+            bole: {
+                google: { occ: '84.0%', adr: '$185.00', label1: 'Bole Hub Occupancy', label2: 'Google Hotels Avg Rate', direct: 68, ota: 32 },
+                booking: { occ: '81.5%', adr: '$178.00', label1: 'Booking.com Market Share', label2: 'Booking.com Comp ADR', direct: 60, ota: 40 },
+                expedia: { occ: '79.0%', adr: '$172.00', label1: 'Expedia Index Share', label2: 'Expedia Comp ADR', direct: 63, ota: 37 },
+                direct:  { occ: '88.0%', adr: '$190.00', label1: 'Direct Channel Occupancy', label2: 'Direct Booking ADR', direct: 80, ota: 20 }
+            },
+            meskel: {
+                google: { occ: '72.0%', adr: '$140.00', label1: 'Meskel Square Occupancy', label2: 'Google Hotels Avg Rate', direct: 54, ota: 46 },
+                booking: { occ: '69.5%', adr: '$135.00', label1: 'Booking.com Market Share', label2: 'Booking.com Comp ADR', direct: 50, ota: 50 },
+                expedia: { occ: '67.0%', adr: '$130.00', label1: 'Expedia Index Share', label2: 'Expedia Comp ADR', direct: 52, ota: 48 },
+                direct:  { occ: '76.0%', adr: '$145.00', label1: 'Direct Channel Occupancy', label2: 'Direct Booking ADR', direct: 70, ota: 30 }
+            }
+        };
+
+        function updateSimulatedFeed() {
+            const district = document.getElementById('district-select').value;
+            const source = document.getElementById('source-select').value;
+            const data = marketDatasets[district][source];
+
+            document.getElementById('metric-1-label').textContent = data.label1;
+            document.getElementById('metric-1-val').textContent = data.occ;
+            document.getElementById('metric-2-label').textContent = data.label2;
+            document.getElementById('metric-2-val').textContent = data.adr;
+
+            document.getElementById('bar-percentage').textContent = `${data.direct}% Direct / ${data.ota}% OTA`;
+            document.getElementById('progress-direct').style.width = data.direct + '%';
+            document.getElementById('progress-ota').style.width = data.ota + '%';
+        }
+
+        // Interactive ROI Calculator
         const roomsRange = document.getElementById('rooms-range');
         const adrRange = document.getElementById('adr-range');
         const occRange = document.getElementById('occ-range');
@@ -876,7 +797,6 @@
 
             const currentMonthly = rooms * adr * (occ / 100) * 30;
             const estimatedLift = currentMonthly * 0.18;
-
             liftVal.textContent = '$' + Math.round(estimatedLift).toLocaleString();
         }
 
@@ -885,7 +805,7 @@
         occRange.addEventListener('input', updateCalculator);
         updateCalculator();
 
-        // Canvas Particle Background Generator
+        // Canvas Particle Background
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -933,10 +853,7 @@
         function closeBookingModal() {
             document.getElementById('booking-modal').classList.add('hidden');
             document.getElementById('booking-modal').classList.remove('flex');
-            document.getElementById('modal-success').classList.add('hidden');
         }
-
-        // Form Submission Handlers
         function handleFormSubmit(e) {
             e.preventDefault();
             document.getElementById('form-success').classList.remove('hidden');
