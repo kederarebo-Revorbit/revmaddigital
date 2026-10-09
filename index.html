@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RevMax Digital Hospitality | Revenue. Digital. Growth.</title>
+    <meta name="description" content="Leading hospitality revenue management, OTA channel optimization, website development, and digital marketing consulting tailored for Ethiopia and East Africa.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        revnavy: '#060B18',
+                        revdark: '#0A1128',
+                        revcard: '#0F1C3F',
+                        revborder: '#1E293B',
+                        revblue: '#0066FF',
+                        revcyan: '#00E5FF',
+                        revgold: '#F59E0B'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif']
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'shimmer': 'shimmer 2.5s infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        shimmer: {
+                            '100%': { transform: 'translateX(100%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #060B18; }
+        ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0066FF; }
+
+        .glass-panel {
+            background: rgba(15, 28, 63, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 229, 255, 0.12);
+        }
+        .glass-panel:hover {
+            border-color: rgba(0, 229, 255, 0.35);
+        }
+        
+        .mesh-bg {
+            background-color: #060B18;
+            background-image: 
+                radial-gradient(at 10% 20%, rgba(0, 102, 255, 0.18) 0px, transparent 50%),
+                radial-gradient(at 90% 15%, rgba(0, 229, 255, 0.15) 0px, transparent 50%),
+                radial-gradient(at 50% 80%, rgba(30, 58, 138, 0.2) 0px, transparent 50%),
+                radial-gradient(at 80% 90%, rgba(245, 158, 11, 0.08) 0px, transparent 40%);
+        }
+
+        #particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="mesh-bg text-slate-100 font-sans selection:bg-revblue selection:text-white antialiased overflow-x-hidden">
+
+    <!-- Reading Progress Bar -->
+    <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-revblue via-revcyan to-revgold z-50 transition-all duration-150" style="width: 0%;"></div>
+
+    <!-- Sticky Navigation -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 py-4 px-6 md:px-12 border-b border-transparent">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-revblue to-revcyan flex items-center justify-center shadow-lg shadow-revblue/30 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-chart-line text-white text-lg"></i>
+                    <div class="absolute -top-1 -right-1 w-3 h-3 bg-revcyan rounded-full animate-ping"></div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-heading font-extrabold text-xl tracking-tight text-white flex items-center gap-1">
+                        Rev<span class="text-revcyan">Max</span>
+                    </span>
+                    <span class="text-[9px] tracking-widest uppercase font-semibold text-slate-400">Digital Hospitality</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-300">
+                <a href="#home" class="hover:text-revcyan transition-colors">Home</a>
+                <a href="#about" class="hover:text-revcyan transition-colors">About</a>
+                <a href="#market" class="hover:text-revcyan transition-colors">Ethiopia Market</a>
+                <a href="#services" class="hover:text-revcyan transition-colors">Services</a>
+                <a href="#roi-calculator" class="hover:text-revcyan transition-colors">ROI Calculator</a>
+                <a href="#why-us" class="hover:text-revcyan transition-colors">Why RevMax</a>
+                <a href="#contact" class="hover:text-revcyan transition-colors">Contact</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="hidden sm:flex items-center gap-4">
+                <a href="tel:+25185447873" class="text-xs font-semibold text-slate-300 hover:text-revcyan flex items-center gap-2 bg-revcard/60 px-3 py-2 rounded-lg border border-revborder">
+                    <i class="fa-solid fa-phone text-revcyan"></i> +251 854 47873
+                </a>
+                <button onclick="openBookingModal()" class="relative group overflow-hidden rounded-xl p-[1px] focus:outline-none">
+                    <span class="absolute inset-0 bg-gradient-to-r from-revblue via-revcyan to-revblue animate-shimmer" style="background-size: 200% 100%;"></span>
+                    <span class="relative px-5 py-2.5 rounded-xl bg-revnavy text-white text-xs font-heading font-bold flex items-center gap-2 group-hover:bg-opacity-85 transition-all">
+                        <i class="fa-solid fa-calendar-check text-revcyan"></i> Book Consultation
+                    </span>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="lg:hidden text-slate-200 text-2xl focus:outline-none p-2">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 right-0 bg-revnavy/95 backdrop-blur-xl border-b border-revborder p-6 flex flex-col gap-4 shadow-2xl">
+            <a href="#home" class="mobile-link text-slate-200 hover:text-revcyan font-medium py-2">Home</a>
+            <a href="#about" class="mobile-link text-slate-200 hover:text-revcyan font-medium py-2">About Us</a>
+            <a href="#market" class="mobile-link text-slate-200 hover:text-revcyan font-medium py-2">Ethiopian Market Context</a>
+            <a href="#services" class="mobile-link text-slate-200 hover:text-revcyan font-medium py-2">Services</a>
+            <a href="#roi-calculator" class="mobile-link text-slate-200 hover:text-revcyan font-medium py-2">ROI Calculator</a>
+            <a href="#why-us" class="mobile-link text-slate-200 hover:text-revcyan font-medium py-2">Why RevMax</a>
+            <a href="#contact" class="mobile-link text-slate-200 hover:text-revcyan font-medium py-2">Contact</a>
+            <div class="pt-4 border-t border-revborder flex flex-col gap-3">
+                <a href="tel:+25185447873" class="text-sm font-semibold text-slate-300 flex items-center gap-2">
+                    <i class="fa-solid fa-phone text-revcyan"></i> +251 854 47873
+                </a>
+                <button onclick="openBookingModal(); toggleMobileMenu();" class="w-full py-3 rounded-xl bg-gradient-to-r from-revblue to-revcyan text-white text-sm font-bold shadow-lg shadow-revblue/30">
+                    Book Consultation
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-28 pb-20 px-6 overflow-hidden">
+        <canvas id="particle-canvas"></canvas>
+        <div class="absolute top-1/4 left-10 w-72 h-72 bg-revblue/20 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-revcyan/15 rounded-full blur-3xl pointer-events-none animate-float"></div>
+
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <div class="lg:col-span-7 flex flex-col gap-6 text-left">
+                <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-revcard/80 border border-revcyan/30 text-revcyan text-xs font-semibold tracking-wide w-fit backdrop-blur-md shadow-lg">
+                    <span class="w-2 h-2 rounded-full bg-revcyan animate-ping"></span>
+                    <span>East Africa’s Premier Hospitality Tech & Revenue Partner</span>
+                </div>
+
+                <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.15]">
+                    Maximizing Hospitality <span class="text-transparent bg-clip-text bg-gradient-to-r from-revcyan via-blue-400 to-revblue">Revenue. Digital. Growth.</span>
+                </h1>
+
+                <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed font-normal">
+                    Empowering hotels, resorts, restaurants, and tour operators across Addis Ababa and beyond with advanced revenue management, precision OTA channel optimization, digital marketing, and bespoke hotel systems.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-4 pt-2">
+                    <button onclick="openBookingModal()" class="px-8 py-4 rounded-xl bg-gradient-to-r from-revblue to-revcyan text-white font-heading font-bold text-sm shadow-xl shadow-revblue/40 hover:scale-105 transition-all flex items-center gap-3 group">
+                        <span>Book a Consultation</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                    <a href="#services" class="px-8 py-4 rounded-xl bg-revcard/80 border border-revborder hover:border-revcyan/50 text-slate-200 font-heading font-semibold text-sm backdrop-blur-md transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-revcyan"></i> Explore Services
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4 pt-8 border-t border-revborder/80 mt-4">
+                    <div>
+                        <div class="font-heading font-black text-2xl sm:text-3xl text-white">+32%</div>
+                        <div class="text-xs text-slate-400 font-medium">Avg. RevPAR Growth</div>
+                    </div>
+                    <div>
+                        <div class="font-heading font-black text-2xl sm:text-3xl text-revcyan">95%</div>
+                        <div class="text-xs text-slate-400 font-medium">OTA Score Optimization</div>
+                    </div>
+                    <div>
+                        <div class="font-heading font-black text-2xl sm:text-3xl text-white">24/7</div>
+                        <div class="text-xs text-slate-400 font-medium">Revenue Monitoring</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Interactive 3D Graphic Card -->
+            <div class="lg:col-span-5 flex justify-center">
+                <div class="relative w-full max-w-md">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-revblue to-revcyan rounded-3xl blur-2xl opacity-30 animate-pulse-slow"></div>
+                    <div class="relative glass-panel p-8 rounded-3xl shadow-2xl border border-revcyan/20 flex flex-col gap-6 animate-float">
+                        <div class="flex items-center justify-between pb-4 border-b border-revborder">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-revblue/20 flex items-center justify-center text-revcyan">
+                                    <i class="fa-solid fa-hotel text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-heading font-bold text-sm text-white">Addis Ababa Hotel Live Feed</h4>
+                                    <p class="text-[11px] text-emerald-400 font-semibold flex items-center gap-1.5">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> Peak MICE & Corporate Demand
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="text-xs bg-revcyan/10 text-revcyan px-2.5 py-1 rounded-full font-bold">+28.4% Rev</span>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="flex justify-between text-xs text-slate-300">
+                                <span class="text-slate-400">Direct vs OTA Share</span>
+                                <span class="font-semibold text-revcyan">64% Direct Bookings</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-revnavy rounded-full overflow-hidden flex">
+                                <div class="bg-revcyan h-full rounded-l-full transition-all duration-1000" style="width: 64%"></div>
+                                <div class="bg-revblue h-full rounded-r-full transition-all duration-1000" style="width: 36%"></div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <div class="bg-revnavy/60 p-3.5 rounded-2xl border border-revborder">
+                                <div class="text-[11px] text-slate-400">Occupancy Rate</div>
+                                <div class="text-lg font-heading font-bold text-white mt-0.5">84.5%</div>
+                                <div class="text-[10px] text-emerald-400 font-semibold mt-1"><i class="fa-solid fa-arrow-up"></i> +12% this month</div>
+                            </div>
+                            <div class="bg-revnavy/60 p-3.5 rounded-2xl border border-revborder">
+                                <div class="text-[11px] text-slate-400">Average Daily Rate</div>
+                                <div class="text-lg font-heading font-bold text-revcyan mt-0.5">$185.00</div>
+                                <div class="text-[10px] text-emerald-400 font-semibold mt-1"><i class="fa-solid fa-arrow-up"></i> Optimized ADR</div>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex items-center justify-between text-xs text-slate-400 border-t border-revborder">
+                            <span>Powered by RevMax Engine</span>
+                            <span class="text-revcyan font-semibold">Active Sync</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US SECTION -->
+    <section id="about" class="py-24 px-6 relative bg-revdark/50 border-t border-b border-revborder">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-6 space-y-6">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-revblue/10 border border-revblue/30 text-revblue text-xs font-semibold">
+                    <i class="fa-solid fa-bullseye text-revcyan"></i> Who We Are
+                </div>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl tracking-tight text-white">
+                    Driving Revenue and Digital Transformation for Hospitality Leaders
+                </h2>
+                <p class="text-slate-300 text-base leading-relaxed">
+                    Based in Addis Ababa, Ethiopia, <strong class="text-white">RevMax Digital Hospitality</strong> is an elite hospitality consulting and technology agency. We bridge the gap between traditional hotel operations and cutting-edge digital revenue generation.
+                </p>
+                <p class="text-slate-300 text-base leading-relaxed">
+                    Our mission is simple: maximize your property's profitability through data-backed revenue strategies, high-conversion websites, flawless Online Travel Agency (OTA) distribution, and world-class staff training tailored specifically to East African and international market dynamics.
+                </p>
+
+                <div class="grid grid-cols-2 gap-6 pt-4">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-revcyan/10 flex items-center justify-center text-revcyan shrink-0 mt-1">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-heading font-bold text-white text-sm">Strategic Revenue Audits</h4>
+                            <p class="text-xs text-slate-400 mt-1">Comprehensive yield and pricing strategy analysis.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-revcyan/10 flex items-center justify-center text-revcyan shrink-0 mt-1">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-heading font-bold text-white text-sm">Omnichannel Presence</h4>
+                            <p class="text-xs text-slate-400 mt-1">Seamless OTA sync and direct booking engine dominance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+                <div class="glass-panel p-6 rounded-3xl border border-revborder flex flex-col justify-between space-y-8">
+                    <div class="w-12 h-12 rounded-2xl bg-revblue/20 flex items-center justify-center text-revcyan text-xl">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <div>
+                        <div class="font-heading font-extrabold text-3xl text-white">100+</div>
+                        <div class="text-xs text-slate-400 font-medium mt-1">Hotels & Properties Audited</div>
+                    </div>
+                </div>
+                <div class="glass-panel p-6 rounded-3xl border border-revborder flex flex-col justify-between space-y-8 mt-6">
+                    <div class="w-12 h-12 rounded-2xl bg-revcyan/20 flex items-center justify-center text-revcyan text-xl">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <div>
+                        <div class="font-heading font-extrabold text-3xl text-white">East Africa</div>
+                        <div class="text-xs text-slate-400 font-medium mt-1">Regional Market Expertise</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ETHIOPIAN & REGIONAL MARKET STRUCTURE SECTION -->
+    <section id="market" class="py-24 px-6 relative">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-revcyan/10 border border-revcyan/30 text-revcyan text-xs font-semibold">
+                    <i class="fa-solid fa-map-location-dot"></i> Market Intelligence
+                </div>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
+                    Optimized for Ethiopia’s Unique Hospitality Ecosystem
+                </h2>
+                <p class="text-slate-300 text-base">
+                    Navigating Addis Ababa’s dynamic blend of diplomatic missions, international MICE delegations, Ethiopian Airlines transit traffic, and expanding domestic tourism requires specialized market positioning.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Market Pillar 1 -->
+                <div class="glass-panel p-8 rounded-3xl border border-revborder relative group hover:border-revcyan/50 transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-revblue to-revcyan flex items-center justify-center text-white text-2xl mb-6 shadow-lg shadow-revblue/30 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-plane-departure"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white mb-3">MICE & Diplomatic Hub Strategy</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Capitalizing on Addis Ababa as the diplomatic capital of Africa. We configure dynamic corporate contracting, embassy rates, and high-yield conference packaging to maximize weekday occupancy.
+                    </p>
+                </div>
+
+                <!-- Market Pillar 2 -->
+                <div class="glass-panel p-8 rounded-3xl border border-revborder relative group hover:border-revcyan/50 transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-revblue to-revcyan flex items-center justify-center text-white text-2xl mb-6 shadow-lg shadow-revblue/30 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white mb-3">OTA Channel & Payment Integration</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Balancing Booking.com, Expedia, and local channels while seamlessly bridging international currency workflows with local digital payment infrastructure for smooth guest settlement.
+                    </p>
+                </div>
+
+                <!-- Market Pillar 3 -->
+                <div class="glass-panel p-8 rounded-3xl border border-revborder relative group hover:border-revcyan/50 transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-revblue to-revcyan flex items-center justify-center text-white text-2xl mb-6 shadow-lg shadow-revblue/30 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white mb-3">F&B & Boutique Hotel Growth</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Modernizing independent Addis boutique hotels and restaurants with QR digital menus, localized social media marketing, and reputation management that builds instant local trust.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION (8 CARDS) -->
+    <section id="services" class="py-24 px-6 bg-revdark/60 border-t border-revborder relative">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-revblue/10 border border-revblue/30 text-revblue text-xs font-semibold">
+                    <i class="fa-solid fa-concierge-bell text-revcyan"></i> Core Capabilities
+                </div>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
+                    Comprehensive Hospitality Solutions
+                </h2>
+                <p class="text-slate-300 text-base">
+                    End-to-end expertise designed to elevate every department of your hospitality enterprise.
+                </p>
+            </div>
+
+            <!-- Service Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Service 1 -->
+                <div class="glass-panel p-6 rounded-3xl border border-revborder hover:border-revcyan/50 transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-revblue/20 flex items-center justify-center text-revcyan text-xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-white mb-2">Revenue Management</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed">Dynamic pricing, forecasting, yield optimization, and competitor benchmarking to maximize RevPAR.</p>
+                    </div>
+                    <button onclick="openBookingModal()" class="mt-6 text-xs text-revcyan font-semibold flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                        <span>Learn More</span> <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-panel p-6 rounded-3xl border border-revborder hover:border-revcyan/50 transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-revcyan/20 flex items-center justify-center text-revcyan text-xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-white mb-2">OTA & Distribution Management</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed">Channel manager configuration, rate parity control, and visibility boosting across global OTAs.</p>
+                    </div>
+                    <button onclick="openBookingModal()" class="mt-6 text-xs text-revcyan font-semibold flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                        <span>Learn More</span> <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-panel p-6 rounded-3xl border border-revborder hover:border-revcyan/50 transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-revblue/20 flex items-center justify-center text-revcyan text-xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-white mb-2">Website Development</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed">Blazing-fast, mobile-optimized hotel websites with integrated secure booking engines.</p>
+                    </div>
+                    <button onclick="openBookingModal()" class="mt-6 text-xs text-revcyan font-semibold flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                        <span>Learn More</span> <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="glass-panel p-6 rounded-3xl border border-revborder hover:border-revcyan/50 transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-revcyan/20 flex items-center justify-center text-revcyan text-xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-white mb-2">Digital Marketing</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed">Targeted social media campaigns, SEO, paid ads, and high-converting short-form video content.</p>
+                    </div>
+                    <button onclick="openBookingModal()" class="mt-6 text-xs text-revcyan font-semibold flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                        <span>Learn More</span> <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="glass-panel p-6 rounded-3xl border border-revborder hover:border-revcyan/50 transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-revblue/20 flex items-center justify-center text-revcyan text-xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-white mb-2">Review & Reputation Management</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed">Proactive guest feedback monitoring, review response strategies, and TripAdvisor/Google ranking enhancement.</p>
+                    </div>
+                    <button onclick="openBookingModal()" class="mt-6 text-xs text-revcyan font-semibold flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                        <span>Learn More</span> <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="glass-panel p-6 rounded-3xl border border-revborder hover:border-revcyan/50 transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-revcyan/20 flex items-center justify-center text-revcyan text-xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-qrcode"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-white mb-2">Digital Menu Solutions</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed">Contactless QR code menus, interactive restaurant ordering, and multi-language support for cafes and restaurants.</p>
+                    </div>
+                    <button onclick="openBookingModal()" class="mt-6 text-xs text-revcyan font-semibold flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                        <span>Learn More</span> <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Service 7 -->
+                <div class="glass-panel p-6 rounded-3xl border border-revborder hover:border-revcyan/50 transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-revblue/20 flex items-center justify-center text-revcyan text-xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-white mb-2">Hospitality Training</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed">Professional front office, revenue management, and guest relations training for hotel staff.</p>
+                    </div>
+                    <button onclick="openBookingModal()" class="mt-6 text-xs text-revcyan font-semibold flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                        <span>Learn More</span> <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Service 8 -->
+                <div class="glass-panel p-6 rounded-3xl border border-revborder hover:border-revcyan/50 transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-revcyan/20 flex items-center justify-center text-revcyan text-xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-hotel"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-white mb-2">New Hotel Project Setup</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed">Pre-opening strategy, PMS/POS setup, OTA onboarding, and operational SOP formulation for new properties.</p>
+                    </div>
+                    <button onclick="openBookingModal()" class="mt-6 text-xs text-revcyan font-semibold flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                        <span>Learn More</span> <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE ROI CALCULATOR SECTION -->
+    <section id="roi-calculator" class="py-24 px-6 relative">
+        <div class="max-w-5xl mx-auto">
+            <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-revcyan/30 shadow-2xl space-y-8 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-revcyan/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="text-center max-w-2xl mx-auto space-y-3">
+                    <span class="text-xs uppercase font-bold tracking-widest text-revcyan">Interactive Tool</span>
+                    <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-white">Estimate Your Revenue Growth Potential</h2>
+                    <p class="text-slate-300 text-sm">Adjust your property metrics below to see estimated monthly revenue lift with RevMax revenue management optimization.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pt-4">
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-slate-300 font-medium">Total Hotel Rooms</span>
+                                <span id="rooms-val" class="font-bold text-revcyan">50 Rooms</span>
+                            </div>
+                            <input type="range" id="rooms-range" min="10" max="300" value="50" step="5" class="w-full accent-revcyan cursor-pointer">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-slate-300 font-medium">Average Daily Rate (ADR) in USD</span>
+                                <span id="adr-val" class="font-bold text-revcyan">$120</span>
+                            </div>
+                            <input type="range" id="adr-range" min="40" max="500" value="120" step="10" class="w-full accent-revcyan cursor-pointer">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-slate-300 font-medium">Current Occupancy Rate</span>
+                                <span id="occ-val" class="font-bold text-revcyan">60%</span>
+                            </div>
+                            <input type="range" id="occ-range" min="20" max="95" value="60" step="5" class="w-full accent-revcyan cursor-pointer">
+                        </div>
+                    </div>
+
+                    <!-- Output Card -->
+                    <div class="bg-revnavy/90 p-8 rounded-3xl border border-revborder flex flex-col justify-center text-center space-y-6 shadow-inner">
+                        <div>
+                            <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Estimated Monthly Revenue Lift</div>
+                            <div id="lift-val" class="font-heading font-black text-4xl sm:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-revcyan to-blue-400 mt-2">$14,580</div>
+                        </div>
+                        <div class="text-xs text-slate-400 px-4">
+                            Based on an average +25% RevPAR enhancement through dynamic pricing, OTA tuning, and direct booking conversion.
+                        </div>
+                        <button onclick="openBookingModal()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-revblue to-revcyan text-white text-xs font-heading font-bold shadow-lg shadow-revblue/30 hover:opacity-90 transition-opacity">
+                            Claim This Growth For Your Property
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE REVMAX SECTION (4 CARDS) -->
+    <section id="why-us" class="py-24 px-6 bg-revdark/60 border-t border-revborder relative">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-revblue/10 border border-revblue/30 text-revblue text-xs font-semibold">
+                    <i class="fa-solid fa-shield-halved text-revcyan"></i> The RevMax Advantage
+                </div>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
+                    Why Hospitality Leaders Choose Us
+                </h2>
+                <p class="text-slate-300 text-base">
+                    We combine international hospitality standards with local market mastery.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="glass-panel p-8 rounded-3xl border border-revborder flex flex-col space-y-4 group hover:border-revcyan/50 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-revblue/20 flex items-center justify-center text-revcyan text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white">Hospitality Expertise</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Deep operational understanding of hotel front office, reservation workflows, and revenue management principles.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="glass-panel p-8 rounded-3xl border border-revborder flex flex-col space-y-4 group hover:border-revcyan/50 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-revcyan/20 flex items-center justify-center text-revcyan text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-chart-bar"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white">Data-Driven Decisions</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Every pricing adjustment and marketing campaign is backed by robust market analytics and occupancy forecasting.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass-panel p-8 rounded-3xl border border-revborder flex flex-col space-y-4 group hover:border-revcyan/50 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-revblue/20 flex items-center justify-center text-revcyan text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white">Customized Solutions</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Tailored strategies designed around your property size, target clientele, and competitive landscape.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="glass-panel p-8 rounded-3xl border border-revborder flex flex-col space-y-4 group hover:border-revcyan/50 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-revcyan/20 flex items-center justify-center text-revcyan text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white">Sustainable Growth</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Long-term profitability frameworks that build brand loyalty, direct bookings, and lasting guest retention.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-24 px-6 relative">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- Contact Info & Details -->
+            <div class="lg:col-span-5 space-y-8">
+                <div class="space-y-4">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-revblue/10 border border-revblue/30 text-revblue text-xs font-semibold">
+                        <i class="fa-solid fa-headset text-revcyan"></i> Get In Touch
+                    </div>
+                    <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
+                        Ready to Maximize Your Property’s Revenue?
+                    </h2>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Contact our Addis Ababa office today for a free initial consultation and revenue potential audit.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 p-4 rounded-2xl glass-panel border border-revborder">
+                        <div class="w-10 h-10 rounded-xl bg-revcyan/10 flex items-center justify-center text-revcyan">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-400 font-medium">Location</div>
+                            <div class="text-sm font-bold text-white">Addis Ababa, Ethiopia</div>
+                        </div>
+                    </div>
+
+                    <a href="tel:+25185447873" class="flex items-center gap-4 p-4 rounded-2xl glass-panel border border-revborder hover:border-revcyan/50 transition-all">
+                        <div class="w-10 h-10 rounded-xl bg-revcyan/10 flex items-center justify-center text-revcyan">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-400 font-medium">Phone / WhatsApp</div>
+                            <div class="text-sm font-bold text-white">+251 854 47873</div>
+                        </div>
+                    </a>
+
+                    <a href="mailto:info@revmaxhospitality.com" class="flex items-center gap-4 p-4 rounded-2xl glass-panel border border-revborder hover:border-revcyan/50 transition-all">
+                        <div class="w-10 h-10 rounded-xl bg-revcyan/10 flex items-center justify-center text-revcyan">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-400 font-medium">Email Address</div>
+                            <div class="text-sm font-bold text-white">info@revmaxhospitality.com</div>
+                        </div>
+                    </a>
+
+                    <a href="https://linkedin.com/company/revmaxdigital" target="_blank" class="flex items-center gap-4 p-4 rounded-2xl glass-panel border border-revborder hover:border-revcyan/50 transition-all">
+                        <div class="w-10 h-10 rounded-xl bg-revcyan/10 flex items-center justify-center text-revcyan">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-400 font-medium">LinkedIn Page</div>
+                            <div class="text-sm font-bold text-white">linkedin.com/company/revmaxdigital</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="lg:col-span-7">
+                <div class="glass-panel p-8 sm:p-10 rounded-3xl border border-revborder relative shadow-2xl">
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-xs font-semibold text-slate-300">Your Name *</label>
+                                <input type="text" required placeholder="Abebe Kebede" class="w-full bg-revnavy/80 border border-revborder rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-revcyan transition-colors">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-semibold text-slate-300">Email Address *</label>
+                                <input type="email" required placeholder="abebe@hotel.com" class="w-full bg-revnavy/80 border border-revborder rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-revcyan transition-colors">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-xs font-semibold text-slate-300">Company / Property Name *</label>
+                                <input type="text" required placeholder="Grand Hotel Addis" class="w-full bg-revnavy/80 border border-revborder rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-revcyan transition-colors">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-semibold text-slate-300">Phone Number</label>
+                                <input type="text" placeholder="+251 ..." class="w-full bg-revnavy/80 border border-revborder rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-revcyan transition-colors">
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-xs font-semibold text-slate-300">Message / Requirements *</label>
+                            <textarea rows="4" required placeholder="Tell us about your hotel or restaurant and revenue goals..." class="w-full bg-revnavy/80 border border-revborder rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-revcyan transition-colors"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-revblue to-revcyan text-white font-heading font-bold text-sm shadow-lg shadow-revblue/30 hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+                            <span>Send Message</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+
+                    <!-- Success State -->
+                    <div id="form-success" class="hidden absolute inset-0 bg-revnavy/95 backdrop-blur-md rounded-3xl flex flex-col items-center justify-center text-center p-8 space-y-4">
+                        <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl animate-bounce">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-white">Message Received Successfully!</h3>
+                        <p class="text-slate-300 text-sm max-w-sm">Thank you for reaching out to RevMax Digital Hospitality. Our revenue consulting team will contact you within 24 hours.</p>
+                        <button onclick="resetForm()" class="px-6 py-2.5 rounded-xl bg-revcard border border-revborder text-xs font-semibold text-slate-200 hover:text-white">Send Another Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-revnavy border-t border-revborder pt-16 pb-12 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-revborder">
+            <div class="space-y-4 md:col-span-1">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-revblue to-revcyan flex items-center justify-center text-white">
+                        <i class="fa-solid fa-chart-line text-sm"></i>
+                    </div>
+                    <span class="font-heading font-extrabold text-lg text-white">Rev<span class="text-revcyan">Max</span></span>
+                </div>
+                <p class="text-xs text-slate-400">Revenue. Digital. Growth.</p>
+                <div class="text-xs text-slate-400">
+                    Addis Ababa, Ethiopia<br>
+                    Phone: +251 854 47873
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-heading font-bold text-sm text-white uppercase tracking-wider">Quick Links</h4>
+                <ul class="space-y-2 text-xs text-slate-400">
+                    <li><a href="#home" class="hover:text-revcyan transition-colors">Home</a></li>
+                    <li><a href="#about" class="hover:text-revcyan transition-colors">About Us</a></li>
+                    <li><a href="#market" class="hover:text-revcyan transition-colors">Ethiopia Market</a></li>
+                    <li><a href="#services" class="hover:text-revcyan transition-colors">Services</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-heading font-bold text-sm text-white uppercase tracking-wider">Services</h4>
+                <ul class="space-y-2 text-xs text-slate-400">
+                    <li><a href="#services" class="hover:text-revcyan transition-colors">Revenue Management</a></li>
+                    <li><a href="#services" class="hover:text-revcyan transition-colors">OTA Optimization</a></li>
+                    <li><a href="#services" class="hover:text-revcyan transition-colors">Website Development</a></li>
+                    <li><a href="#services" class="hover:text-revcyan transition-colors">Digital Marketing</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-heading font-bold text-sm text-white uppercase tracking-wider">Connect Online</h4>
+                <p class="text-xs text-slate-400">Follow our updates and hospitality insights on LinkedIn.</p>
+                <a href="https://linkedin.com/company/revmaxdigital" target="_blank" class="inline-flex items-center gap-2 text-xs text-revcyan font-semibold hover:underline">
+                    <i class="fa-brands fa-linkedin text-sm"></i> linkedin.com/company/revmaxdigital
+                </a>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+            <div>&copy; 2026 RevMax Digital Hospitality. All rights reserved.</div>
+            <div class="flex items-center gap-6">
+                <a href="#" class="hover:text-slate-300">Privacy Policy</a>
+                <a href="#" class="hover:text-slate-300">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOOKING MODAL -->
+    <div id="booking-modal" class="fixed inset-0 z-50 bg-revnavy/80 backdrop-blur-lg hidden items-center justify-center p-4">
+        <div class="glass-panel p-8 sm:p-10 rounded-3xl border border-revcyan/30 w-full max-w-lg relative shadow-2xl animate-float">
+            <button onclick="closeBookingModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="space-y-2 mb-6">
+                <h3 class="font-heading font-extrabold text-2xl text-white">Book a Consultation</h3>
+                <p class="text-xs text-slate-300">Schedule a 30-minute discovery call with our revenue management team.</p>
+            </div>
+
+            <form onsubmit="handleModalSubmit(event)" class="space-y-4">
+                <div class="space-y-1">
+                    <label class="text-xs font-semibold text-slate-300">Full Name *</label>
+                    <input type="text" required placeholder="Abebe Kebede" class="w-full bg-revnavy/90 border border-revborder rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-revcyan">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-xs font-semibold text-slate-300">Email Address *</label>
+                    <input type="email" required placeholder="abebe@hotel.com" class="w-full bg-revnavy/90 border border-revborder rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-revcyan">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-xs font-semibold text-slate-300">Preferred Date & Time *</label>
+                    <input type="datetime-local" required class="w-full bg-revnavy/90 border border-revborder rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-revcyan">
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-revblue to-revcyan text-white text-xs font-heading font-bold shadow-lg shadow-revblue/30 mt-2">
+                    Confirm Booking Request
+                </button>
+            </form>
+
+            <div id="modal-success" class="hidden absolute inset-0 bg-revnavy/95 backdrop-blur-md rounded-3xl flex flex-col items-center justify-center text-center p-8 space-y-4">
+                <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl animate-bounce">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <h3 class="font-heading font-bold text-2xl text-white">Consultation Booked!</h3>
+                <p class="text-slate-300 text-xs">We have received your request and sent a confirmation email with calendar details.</p>
+                <button onclick="closeBookingModal()" class="px-6 py-2.5 rounded-xl bg-revcard border border-revborder text-xs font-semibold text-white">Close Window</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT ANIMATIONS & INTERACTIVITY -->
+    <script>
+        // Scroll Progress Bar & Navbar Styling
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progress-bar').style.width = scrolled + '%';
+
+            const navbar = document.getElementById('navbar');
+            if (winScroll > 40) {
+                navbar.classList.add('bg-revnavy/90', 'backdrop-blur-xl', 'border-revborder', 'shadow-xl');
+            } else {
+                navbar.classList.remove('bg-revnavy/90', 'backdrop-blur-xl', 'border-revborder', 'shadow-xl');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Interactive ROI Calculator Logic
+        const roomsRange = document.getElementById('rooms-range');
+        const adrRange = document.getElementById('adr-range');
+        const occRange = document.getElementById('occ-range');
+        
+        const roomsVal = document.getElementById('rooms-val');
+        const adrVal = document.getElementById('adr-val');
+        const occVal = document.getElementById('occ-val');
+        const liftVal = document.getElementById('lift-val');
+
+        function updateCalculator() {
+            const rooms = parseInt(roomsRange.value);
+            const adr = parseInt(adrRange.value);
+            const occ = parseInt(occRange.value);
+
+            roomsVal.textContent = rooms + ' Rooms';
+            adrVal.textContent = '$' + adr;
+            occVal.textContent = occ + '%';
+
+            const currentMonthly = rooms * adr * (occ / 100) * 30;
+            const estimatedLift = currentMonthly * 0.18;
+
+            liftVal.textContent = '$' + Math.round(estimatedLift).toLocaleString();
+        }
+
+        roomsRange.addEventListener('input', updateCalculator);
+        adrRange.addEventListener('input', updateCalculator);
+        occRange.addEventListener('input', updateCalculator);
+        updateCalculator();
+
+        // Canvas Particle Background Generator
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        for (let i = 0; i < 35; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2 + 1,
+                color: Math.random() > 0.5 ? 'rgba(0, 229, 255, 0.4)' : 'rgba(0, 102, 255, 0.4)',
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5
+            });
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.fill();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // Modal Controls
+        function openBookingModal() {
+            document.getElementById('booking-modal').classList.remove('hidden');
+            document.getElementById('booking-modal').classList.add('flex');
+        }
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+            document.getElementById('booking-modal').classList.remove('flex');
+            document.getElementById('modal-success').classList.add('hidden');
+        }
+
+        // Form Submission Handlers
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            document.getElementById('form-success').classList.remove('hidden');
+        }
+        function resetForm() {
+            document.getElementById('contact-form').reset();
+            document.getElementById('form-success').classList.add('hidden');
+        }
+        function handleModalSubmit(e) {
+            e.preventDefault();
+            document.getElementById('modal-success').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
